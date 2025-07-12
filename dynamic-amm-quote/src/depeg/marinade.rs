@@ -4,7 +4,8 @@ use prog_dynamic_amm::constants::depeg;
 use std::convert::TryInto;
 
 pub fn get_virtual_price(bytes: &[u8]) -> Option<u64> {
-    let stake_state = State::deserialize(&mut &bytes[8..]).ok()?;
+    let mut bytes = bytes;
+    let stake_state = State::deserialize(&mut bytes).ok()?;
 
     let virtual_price = (stake_state.msol_price as u128)
         .checked_mul(depeg::PRECISION as u128)?
