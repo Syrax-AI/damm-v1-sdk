@@ -56,7 +56,7 @@ impl Default for PoolType {
 }
 
 #[account]
-#[derive(Debug, Copy)]
+#[derive(AnchorSerialize, AnchorDeserialize, Default, Debug, Clone, Copy)]
 /// State of pool account
 pub struct Pool {
     /// LP token mint of the pool
