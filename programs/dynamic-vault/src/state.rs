@@ -12,7 +12,7 @@ pub const LOCKED_PROFIT_DEGRADATION_DENOMINATOR: u128 = 1_000_000_000_000;
 
 /// Vault struct
 #[account]
-#[derive(Debug)]
+#[derive(AnchorSerialize, AnchorDeserialize, Default, Debug, Clone, Copy)]
 pub struct Vault {
     /// The flag, if admin set enable = false, then the user can only withdraw and cannot deposit in the vault.
     pub enabled: u8,
